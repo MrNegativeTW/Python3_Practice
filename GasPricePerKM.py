@@ -1,6 +1,6 @@
-print('你從上次加滿油後跑了多少公里？')
+print('上次加滿後跑了多少公里？')
 mileage = float(input())
-print('你上次加了幾公升的油？')
+print('上次加了幾公升的油？')
 oil = float(input())
 
 x = mileage / oil
