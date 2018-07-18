@@ -16,6 +16,19 @@
 ## 5_Dictionaries
 字典
 
+## 6_If
+判斷式
+
+## 7_Loop
+迴圈
+
+## 8_func
+Function
+
+## IsLeapYearOrNot
+判斷是否為閏年<br>
+可判斷輸入的是不是整數
+
 ## AutoReplyBot
 將來會把它發展成 Telegram 上的自動回話機器人
 
