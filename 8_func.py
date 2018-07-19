@@ -41,14 +41,4 @@ info(*course, **names)
 
 
 
-
-
-
-
-
-
-
-
-
-
 print('')

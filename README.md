@@ -25,9 +25,15 @@
 ## 8_func
 Function
 
+## 9_Import
+引入模組
+
+## ToGoogle
+使用 webbrowser module 幫你打開 Google
+
 ## IsLeapYearOrNot
-判斷是否為閏年<br>
-可判斷輸入的是不是整數
+輸入年份可判斷是否為閏年<br>
+額外功能：若不是輸入數字(含負值)，都會叫你再輸入一次
 
 ## AutoReplyBot
 將來會把它發展成 Telegram 上的自動回話機器人
