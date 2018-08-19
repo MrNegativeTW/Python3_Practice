@@ -41,3 +41,7 @@ Function
 ## GasPricePerKM
 小小的油耗計算器
 
+## DiffToChoice
+神選之物
+本程式專門幫助選擇有困難的你
+有一次買麵包時遲遲無法決定，所以本程式就誕生了

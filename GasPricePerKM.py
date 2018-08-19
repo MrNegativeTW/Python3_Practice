@@ -1,3 +1,4 @@
+# 超簡易快速油耗計算機
 print('上次加滿後跑了多少公里？')
 mileage = float(input())
 print('上次加了幾公升的油？')
