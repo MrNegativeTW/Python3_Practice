@@ -1,31 +1,31 @@
 # Python3_Practice
 存放Python練習作品用
 
-## 1_BasicStringUsing
+**1_BasicStringUsing**<br>
 練習基本字串，印出、變大、變小等
 
-## 2_Numbers
+**2_Numbers**<br>
 加減乘除
 
-## 3_Lists
+**3_Lists**<br>
 陣列
 
-## 4_TuplesSets
+**4_TuplesSets**<br>
 陣列
 
-## 5_Dictionaries
+**5_Dictionaries**<br>
 字典
 
-## 6_If
+**6_If**<br>
 判斷式
 
-## 7_Loop
+**7_Loop**<br>
 迴圈
 
-## 8_func
+**8_func**<br>
 Function
 
-## 9_Import
+**9_Import**<br>
 引入模組
 
 ## ToGoogle
