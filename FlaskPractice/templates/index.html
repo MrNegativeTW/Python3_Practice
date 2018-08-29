@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome!</title>
+</head>
+<body>
+
+	{% for toBuildSJson in toBuildSJson %}
+
+	<div class='col-sm'>
+
+		<div class='card border-secondary mt-3'>
+			<a target='_blank' href='#' onclick='return false;'>
+				<img class='card-img-top' src='{{ toBuildSJson.image }}' alt='{{ toBuildSJson.name }}'>
+			</a>
+
+			<div class='card-body'>
+				<h4 class='card-title'>	
+					{{ toBuildSJson.name }}
+				</h4>
+				<p class='card-text'>{{ toBuildSJson.classes }}</p>
+				<a target='_blank' href='0' class='btn btn-info disabled' style='margin-right:4px ;'><i class='fa fa-book' aria-hidden=true'></i> 菜單</a>
+				<a target='_blank' href='0' class='btn btn-info disabled'> 了解更多</a>
+			</div>
+
+			<ul class='list-group list-group-flush'>
+				<li class='list-group-item'>電話：{{toBuildSJson.phone}}</li>
+				<li class='list-group-item'>時段：{{toBuildSJson.times}}</li>
+			</ul>
+
+		</div>
+
+	</div>
+
+	{% endfor %}
+
+</body>
+</html>
