@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 app = Flask(__name__)
 
 toBuildSJson = [
@@ -206,12 +206,30 @@ toBuildSJson = [
 
 @app.route('/')
 def hello():
-	return render_template('index.html', toBuildSJson = toBuildSJson)
+	return render_template('index.html')
 
 @app.route('/about')
 def about():
-	return render_template('about.html')
+	return render_template('about.html', toBuildSJson = toBuildSJson)
+
+@app.route('/category')
+def categorys():
+	return render_template('categorys.html')
+
+@app.route('/detail')
+def detail():
+	return render_template('detail.html')
+
 
 if __name__ == '__main__':
 	app.run(debug=True)
+
+
+
+
+
+
+
+
+
 
