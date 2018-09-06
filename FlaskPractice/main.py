@@ -1,12 +1,13 @@
 import json
-from flask import Flask, render_template, url_for, flash
+from flask import Flask, render_template, url_for, flash, request
 from flask_wtf import FlaskForm
 from wtforms import SelectField, StringField, SubmitField
 
 class TestForm(FlaskForm):
-	number = SelectField('123')
-	name = StringField('Name')
-	submit = SubmitField('Login')
+	number = SelectField('有幾項呢', choices=[('1','1 項'), ('2','2 項')])
+	item = StringField('Name')
+	add = SubmitField('加入')
+	submit = SubmitField('幫我選一個吧')
 
 
 app = Flask(__name__)
@@ -21,12 +22,12 @@ def hello():
 @app.route('/DiffToChoice', methods=['GET', 'POST'])
 def DiffToChoice():
 	form = TestForm()
-	names = form.name.data
-	return names
+	qu=[]
+	itemss = form.item.data
+	if request.method == 'POST':
+		qu.append(itemss)
+
 	return render_template('DiffToChoice.html', form=form)
-
-
-
 
 
 
