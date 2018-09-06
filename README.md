@@ -22,6 +22,13 @@
 有一次買麵包時遲遲無法決定，所以本程式就誕生了<br>
 ![DiffToChoice](https://raw.githubusercontent.com/MrNegativeTW/Python3_Practice/master/DiffToChoice.png)
 
+## FlaskPractice
+Install
+```
+python -m pip install flask
+python -m pip install flask-wtf
+```
+
 # 基礎 / Basic
 **1_BasicStringUsing**<br>
 練習基本字串，印出、變大、變小等

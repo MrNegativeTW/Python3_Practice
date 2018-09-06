@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
-{% block homePage %}
+{% block Content %}
 <div class="header-nightsky">
         <div class="hero">
-            <h1>想覓食?<br>看這邊!</h1>
-            <p>還在路上找吃什麼?<br>這邊都幫你列出來了!</p>
+            <h1>你知道嗎</h1>
+            <p>這邊都是我用 Python + Flask 弄出來的</p>
         </div>
     </div>
     <!--嗨 你好 原來你也看原始碼-->
@@ -35,51 +35,5 @@
 			</div>
 		</div>
 	</div>
-	
-	<!--地點區塊-->
-	<div style="background-color: #f5f5f5">
-		<div class="container text-center sheet-padding">
-		<h1 style="margin-bottom: 16px;">地點</h1>
-		<hr style="max-width: 75px; border-width: 5px; border-color: #33cccc;"/>
-		<div class="row global-margin-top-16">
-			<div class="col-sm wow slideInLeft" data-wow-offset="250">
-				<h4 class="wowTop global-margin-top-16">南台街左右邊</h4>
-				<p>後門走出去後道路兩旁</p>
-				<h4 class="wowTop global-margin-top-16">大武街左右邊</h4>
-				<p>南台街左轉後道路兩旁</p>
-				<h4 class="wowTop global-margin-top-16">往醫院方向</h4>
-				<p>大武街看到眼鏡行後往右前方走</p>
-				<h4 class="wowTop global-margin-top-16">往S棟方向</h4>
-				<p>三宿右轉那條路</p>
-				<h4 class="wowTop global-margin-top-16">其他</h4>
-				<p>店家數量少或路名不好辨認地區</p>
-			</div>
-			<div class="col-sm wow slideInRight" data-wow-offset="250">
-			<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d743.6215703721521!2d120.2241031667013!3d23.02199988433783!3m2!1i1024!2i768!4f13.1!5e0!3m2!1szh-TW!2stw!4v1524386150982" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
-			</div>
-		</div>
-		</div>
-	</div>
-	
-	<!--開發進度區塊-->
-	<div class="sheet-padding">
-	<div class="container" style="padding-top: 10px; padding-bottom: 20px;">
-		<h3><p class="text-center">總開發進度：50%</p></h3>
-		<div class="progress">
-  			<div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-		</div>
-	</div>
-	<div class="container" style="padding-top: 10px; padding-bottom: 20px;">
-		<h3><p class="text-center">"分類" 開發進度：80%</p></h3>
-		<div class="progress">
-  			<div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-		</div>
-	</div>
-	<div class="container" style="padding-top: 10px; padding-bottom: 20px;">
-		<h3><p class="text-center">"了解更多" 開發進度：20%</p></h3>
-		<div class="progress">
-  			<div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-		</div>
-	</div>
-	</div>
-{% endblock homePage %}
+
+{% endblock Content %}
