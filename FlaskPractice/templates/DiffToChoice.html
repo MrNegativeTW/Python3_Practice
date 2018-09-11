@@ -24,7 +24,6 @@
 				</div>
 				<div class="form-group">
 					{{ form.submit(class="btn btn-outline-info") }}
-					{{ ans }}
 				</div>
 			</form>
 		</div>
@@ -32,7 +31,14 @@
 
 
 		<div class="col-sm">
-			
+			神選之物就是：<br>
+			<h3>
+				{% if ans %}
+					{{ ans }}
+				{% else %}
+					嗯...
+				{% endif %}
+			</h3>
 		</div>
 
 

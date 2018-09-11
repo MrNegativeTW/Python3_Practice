@@ -30,11 +30,12 @@ def DiffToChoice():
 	if request.method == 'GET':
 		return render_template('DiffToChoice.html', form=form)
 	elif request.method == 'POST':
+		qu.clear()
 		qu.append(itemssOne)
 		qu.append(itemssTwo)
 		ans = random.choice(qu)
 		# return(ans)
-		return render_template('DiffToChoice.html', form=form)
+		return render_template('DiffToChoice.html', form=form, ans=ans)
 
 @app.route('/ToGoogle')
 def ToGoogle():
