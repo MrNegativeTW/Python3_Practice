@@ -17,12 +17,14 @@
 			<form method="POST" action="">
 				<div class="form-group">
 					{{ form.hidden_tag() }}
-					{{ form.item.label(class="form-control-label") }} 
-					{{ form.item(class="form-control") }}
+					{{ form.itemOne.label(class="form-control-label") }} 
+					{{ form.itemOne(class="form-control") }}
+					{{ form.itemTwo.label(class="form-control-label") }} 
+					{{ form.itemTwo(class="form-control") }}
 				</div>
 				<div class="form-group">
-					{{ form.add(class="btn btn-outline-info") }}
 					{{ form.submit(class="btn btn-outline-info") }}
+					{{ ans }}
 				</div>
 			</form>
 		</div>
