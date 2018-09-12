@@ -1,10 +1,10 @@
 # Requirement
-macOS
-Python 3.7 (or above)
-Brew
-Git
-HeroKu Acount
-**IMPORTANT : Extremely Ultra Super fast Internet Connection**
+macOS<br>
+Python 3.7 (or above)<br>
+Brew<br>
+Git<br>
+HeroKu Acount<br>
+**IMPORTANT : Extremely Ultra Super fast Internet Connection**<br>
 
 # Local Deploy
 After clone repo, run these script in terminal.
@@ -30,19 +30,24 @@ Then Login to HeroKu Account
 heroku login
 ```
 
+Move to Working Dir
+```
+cd some/where/FlaskPractice
+```
+
 List all module used in project
 ```
 python -m pip freeze > requirements.txt
 ```
 
-Move to Working Dir and init git
+Create a file called `Procfile`, then add below text.
 ```
-cd some/where/FlaskPractice
-git init
+web: gunicorn app:app
 ```
 
-Connect Repo on Heroku
+Init git and connect repo on Heroku
 ```
+git init
 heroku git:remote -a heroku_app_name
 ```
 
