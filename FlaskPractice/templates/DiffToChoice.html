@@ -1,6 +1,14 @@
 {% extends "layout.html" %}
 {% block Content %}
 <div class="container global-margin-top-16">
+
+	<div class="jumbotron">
+		<div class="display-4">神選之物</div>
+		<div class="lead">本程式專門幫助選擇有困難的你，尤其每當吃飯不知道要吃什麼時。</div>
+		<hr>
+		<p>使用方法：<br>1. 填入你讓你選不定的東西，例如：麻醬麵和乾麵<br>2. 接著請神幫你選一個</p>
+	</div>
+
 	<div class="row">
 
 		<div class="col-sm">
@@ -32,13 +40,13 @@
 
 		<div class="col-sm">
 			神選之物就是：<br>
-			<h3>
 				{% if ans %}
+					<h3 class="text-center">
 					{{ ans }}
+					</h3>
 				{% else %}
-					嗯...
+					
 				{% endif %}
-			</h3>
 		</div>
 
 

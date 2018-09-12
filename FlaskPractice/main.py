@@ -44,8 +44,8 @@ def ToGoogle():
 
 # 油耗計算 / GasPricePerKm
 class GasPricePerKmForm(FlaskForm):
-	mileage = StringField('自上次加滿到現在跑了多少公里呢 ?')
-	oil = StringField('上次加了多少公升 ?')
+	mileage = StringField('Trip 里程數')
+	oil = StringField('加了多少公升 ?')
 	submit = SubmitField('幫我算算')
 @app.route('/GasPricePerKm', methods=['GET', 'POST'])
 def GasPricePerKm():
