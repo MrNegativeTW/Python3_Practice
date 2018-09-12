@@ -1,4 +1,3 @@
-import json, random
 from flask import Flask, render_template, url_for, flash, request
 from flask_wtf import FlaskForm
 from wtforms import SelectField, StringField, SubmitField
@@ -20,6 +19,7 @@ class DiffToChoiceForm(FlaskForm):
 	submit = SubmitField('神啊 幫我選一個')
 @app.route('/DiffToChoice', methods=['GET', 'POST'])
 def DiffToChoice():
+	import random
 	form = DiffToChoiceForm()
 
 	qu=[]
@@ -42,7 +42,7 @@ def ToGoogle():
 	webbrowser.open('https://google.com')
 	return render_template('ToGoogle.html')
 
-# GasPricePerKm
+# 油耗計算 / GasPricePerKm
 class GasPricePerKmForm(FlaskForm):
 	mileage = StringField('自上次加滿到現在跑了多少公里呢 ?')
 	oil = StringField('上次加了多少公升 ?')
@@ -59,8 +59,29 @@ def GasPricePerKm():
 	elif request.method == 'POST':
 		xx = float(x)
 		yy = float(y)
-		resultss = xx / yy
-		return render_template('GasPricePerKm.html', form=form, result=resultss)
+		result = xx / yy
+		results = int(result)
+		return render_template('GasPricePerKm.html', form=form, result=results)
+
+# 漂亮的考試時間 / BeautifulExam
+@app.route('/BeautifulExam', methods=['GET', 'POST'])
+def BeautifulExam():
+	return render_template('BeautifulExam')
+
+# 自動考試 / AutoExam
+@app.route('/AutoExam', methods=['GET', 'POST'])
+def AutoExam():
+	return render_template('AutoExam.html')
+
+# 待發展 / Working
+@app.route('/Working', methods=['GET', 'POST'])
+def Working():
+	return render_template('Working.html')
+
+
+
+
+
 
 if __name__ == '__main__':
 	app.run(debug=True)

@@ -35,6 +35,20 @@ Nobody {
   color: #828282;
   font-weight: lighter;
 }
+a {
+  color:inherit;
+  text-decoration: none;
+ }
+.bigbig {
+	position: relative;
+	padding-bottom: 5px;
+	transition: 0.5s ease;
+}
+.bigbig:hover {
+	transform: scale(1.05, 1.05);
+	box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 
 /* CSS used for positioning the footers at the bottom of the page. */
 /* You can remove this. */
@@ -57,7 +71,7 @@ body{
 
 /*Header-Nightsky*/
 .header-nightsky {
-    background: url("https://images.unsplash.com/photo-1527657580387-0f1e1aeba8b9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4ad5d466be31231a9054c66cb08ddc6d&auto=format&fit=crop&w=1351&q=80") no-repeat;
+    background: url("https://fvu3mq.bn.files.1drv.com/y4mEIso5ludtoO5xhCKPLDg4pV8YTBq2LeUUeyBco-LdI-eRQJFvGiIrY7q4waIyTPRX-4YFPxqpji0BKY_-6ksTyGI0hYCsRL3k4OlSrNh1kmZLAZrTft5kSOEtVFL-kuyaitD_d_SrUE7izYmB5zaFp87RkaHfvLpvP8DoHKSXkgbMnr9k3dr8njQwJyMczHX__rfVIIOkpIvyXofq4BexA") no-repeat;
 	height: 100%;
 	background-position: center;
     background-repeat: no-repeat;
@@ -153,4 +167,3 @@ RGB
     background-color: #001f3f;
   }
 }
-
