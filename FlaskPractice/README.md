@@ -53,3 +53,6 @@ git commit -am 'Something just did'
 git push heroku master
 cat cat Procfile
 ```
+
+
+[Deploying Flask to Heroku](https://www.youtube.com/watch?v=pmRT8QQLIqk)
