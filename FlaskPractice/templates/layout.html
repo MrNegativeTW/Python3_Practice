@@ -5,8 +5,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<!--網站圖標-->
-	<link rel="icon" href="../favicon.png" />
-  	<title>Python Works</title>
+	<link rel="icon" href="{{url_for('static', filename='image/navIcon.png')}}" />
+ 	{% if title %}
+		<title>{{ title }}</title>
+	{% else %}
+		<title>Python Works</title>
+	{% endif %}
     <meta name="URL" content="" />
 	<!--搜尋引擎-->
 	<meta name="robots" content="index,follow" />
@@ -24,7 +28,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="Python 作品集" />
 	<meta property="og:description"  content="暫時想不到" />
-	<meta property="og:image" content="http://3.bp.blogspot.com/-lnKdui4KBw8/WuXRudpmhfI/AAAAAAAAhUo/qdDqeaS4OfMtA9bW1K8vtARQrqY90e4SwCK4BGAYYCw/s1600/screenshot-no-awful-food-byethost7-com-1525010834106.png" />
+	<meta property="og:image" content="https://imgur.com/6ZoOgKk" />
 	<!--CSS-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -39,7 +43,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3d3d3d">
 	<div class="container-fluid">
 		<a class="navbar-brand js-scroll-trigger" href="../">
-			<img src="../assets/img/navIcon.png" width="30" height="30" class="d-inline-block align-top" alt="">Python Works</a>
+			<img src="{{url_for('static', filename='image/navIcon.png')}}" width="30" height="30" class="d-inline-block align-top" alt="">Python Works</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>

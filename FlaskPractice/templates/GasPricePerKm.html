@@ -16,8 +16,17 @@
           {{ form.hidden_tag() }}
           {{ form.mileage.label(class="form-control-label") }}
           {{ form.mileage(class="form-control") }}
+
+          {% for error in form.mileage.errors %}
+          <P style="color: red;">*{{ error }}</P>
+          {% endfor %}
+
           {{ form.oil.label(class="form-control-label") }}
           {{ form.oil(class="form-control") }}
+
+          {% for error in form.oil.errors %}
+          <P style="color: red;">*{{ error }}</P>
+          {% endfor %}
         </div>
         <div class="form-group">
           {{ form.submit(class="btn btn-outline-info") }}
