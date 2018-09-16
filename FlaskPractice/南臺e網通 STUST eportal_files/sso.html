@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//zh">
+<!-- saved from url=(0083)https://identity.stust.edu.tw:8443/nidp/idff/sso?id=3&sid=0&option=credential&sid=0 -->
+<html lang="zh"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  	  	<meta http-equiv="Content-Language" content="zh">
+	  	
+
+		<style type="text/css" media="screen">		
+			td label   		{ font-size: 12px ; padding-right: 0; }
+			label 		{ font-size: 12px; padding-right:0; }
+   			input { font-family: sans-serif; }
+			.instructions 	{ color: #4d6d8b; font-size:12px; margin:0.2em}
+		</style>
+
+ 	  	<script type="text/javascript" src="./showhide_2.js"></script>
+	  	<script language="JavaScript">
+			var i = 0;
+			function imageSubmit()
+			{
+  			    if (i == 0)
+  			    {	
+     				 i = 1;
+     				 document.IDPLogin.submit();
+  			    }
+  
+  			    return false;
+			}
+		</script>
+    	</head>
+	<body style="overflow:hidden;background-color:#dedede" marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" onload="document.IDPLogin.Ecom_User_ID.focus();">
+      	<form name="IDPLogin" enctype="application/x-www-form-urlencoded" method="POST" action="https://identity.stust.edu.tw:8443/nidp/idff/sso?sid=0" autocomplete="off">
+			<input type="hidden" name="option" value="credential">
+
+			<input type="hidden" name="target" value="https://eportal.stust.edu.tw/examseat/login.aspx">
+
+	      	<table border="0" style="margin-top:0" width="200" cellspacing="0" cellpadding="0" height="105">
+		    		<tbody><tr>
+			  		<td style="padding: 0px">
+						<table border="0">
+							<tbody><tr>
+								<td align="left">
+									<label>使用者名稱：</label>
+								</td>
+								<td align="left">
+									<input type="text" class="smalltext" name="Ecom_User_ID" size="12">
+								</td>
+							</tr>
+							<tr>
+								<td align="left">
+									<label>密碼：</label>						
+								</td>							
+								<td align="left">
+									<input type="password" class="smalltext" name="Ecom_Password" size="12">
+								</td>							
+							</tr>
+							<tr>
+								<td align="right" colspan="2" style="white-space: nowrap">
+									<input alt="登入" border="0" name="loginButton2" src="./btnlogin_zh_TW.gif" type="image" value="Login" onclick="return imageSubmit()">
+								</td>
+                            </tr>
+						</tbody></table>
+					</td>
+				</tr>
+
+	    
+      	  </tbody></table>
+        	</form>
+    	
+</body></html>

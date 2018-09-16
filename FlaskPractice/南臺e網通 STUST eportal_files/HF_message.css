@@ -1,0 +1,66 @@
+.message 
+	{margin: 1em 3em 1em 1em;}
+
+.messagebox
+	{display:block;}
+
+.messagebox *
+	{ display:block;
+	height:1px;
+	overflow:hidden;
+	background:#EBECA5; }
+
+.messagebox1
+	{ border-right:1px solid #f6f6d8;
+	padding-right:1px;
+	margin-right:3px;
+	border-left:1px solid #f6f6d8;
+	padding-left:1px;
+	margin-left:3px;
+	background:#f0f0bb;}
+
+.messagebox2
+	{border-right:1px solid #fdfdf6;
+	border-left:1px solid #fdfdf6;
+	padding:0px 1px;
+	background:#eeefb6;
+	margin:0px 1px; }
+
+.messagebox3
+	{ border-right:1px solid #eeefb6;
+	border-left:1px solid #eeefb6;
+	margin:0px 1px; }
+
+.messagebox4
+	{ border-right:1px solid #f6f6d8;
+	border-left:1px solid #f6f6d8; }
+
+.messagebox5
+	{ border-right:1px solid #f0f0bb;
+	border-left:1px solid #f0f0bb; }
+
+.messagebox_content
+	{ padding:0 10px; background:#ebeca5; position: relative; } 
+
+.messagebox_content img
+	{ float: left; 
+	padding-right: 0.5em; 
+	padding-bottom: 0.5em; 
+	padding-left: 0.2em; } 
+	
+#closebutton { position: absolute; top: 2px; right: 2px;}	
+
+.messagebox_content .warntype
+	{color: #9a4000;
+	padding-right: 0.3em; }
+.messagebox_content .errortype { color: #d61e11; text-transform: uppercase; letter-spacing: 0.1em; padding-right: 0.3em; }
+.messagebox_content .infotype { color: #4d6d8b; padding-right: 0.3em; }
+.messagebox_content .successtype { color: #117f12; padding-right: 0.3em; }
+.messagebox_content .unknowntype { color: #9a4000; padding-right: 0.3em; }
+.messagebox_content .messagetext
+	{ font-size: 0.8em;
+	font-weight: bold;
+	padding: 0.75em 1.5em } 
+	
+.messagebox_content .subtext
+	{ color: #424242; font-size: 0.7em; background-color: #fff; margin-top: 0.2em; padding: 0.5em 1.5em 0.75em; } 	

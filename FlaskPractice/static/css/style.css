@@ -50,6 +50,14 @@ a {
   color:inherit;
   text-decoration: none;
 }
+.jumbotron-padding{
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+.jumbotron-title{
+  font-size: 42px;
+}
+
 
 
 /* CSS used for positioning the footers at the bottom of the page. */

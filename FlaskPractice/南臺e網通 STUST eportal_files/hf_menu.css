@@ -1,0 +1,46 @@
+a { color: #039; }
+
+
+tr.rule2 div.menutitle { font-size: 1em; }
+td div.menutitle { font-size: 1em; }
+span div.menutitle { font-size: 0.9em; }
+.menutitle { font-size: 0.9em; font-weight: bold; background-color: #e0e1df; margin-bottom: 0.5em; padding: 0.5em; }
+tr.columnhead div.menutitle { font-size: 1em; background-color: #e0e1df; }
+.menutitle img, .infoboxtitle img 
+	{float: right}
+.menudetail 
+	{ position: absolute; 
+	background-color: #ffffff; 
+	text-align: left; 
+	border: solid 1px #000;
+	z-index: 10; 
+	top: 0; 
+	width: 200px; }
+tr.columnhead div.menudetail { background-color: #ffffff; text-align: left; position: absolute; z-index: 10; top: 0; width: 200px; border: solid 1px #000; 
+font-weight: normal; font-size: 1em;}
+.menuitem1 a:link
+	{ text-decoration: none;}
+
+.menuitem1 a	
+	{padding-top: 2px; 
+	padding-bottom: 2px; 
+	padding-right: 5px; 
+	padding-left: 5px; 
+	text-decoration: none;}
+
+	
+.menuitem1 a:hover { color: white; background-color: #458ab9;}
+
+.menuitem1 
+	{ width: 180px; 
+	padding: 0.2em 0.5em 0.3em; 
+	line-height: 1.1em; }
+.menuitem2    /* for a menu item that is disabled (disabled link) */ 
+	{ color: gray; 
+	padding: 0.3em; 
+	margin-left: 0.5em}
+
+.menuitemspacer    /* to add a spacer between a section or group within a menu */ 
+	{ font-size: 0.85em; padding: 0.3em; margin-left: 0.5em; background: url(../images/dotline_bg.gif) repeat-x; }
+
+.menubottom  { margin-bottom: 0px; padding-bottom: 0px; border-bottom: 5px solid #458ab9 }

@@ -1,4 +1,9 @@
 # Requirement
+![](https://img.shields.io/badge/Flask-1.0.2-green.svg?longCache=true&style=for-the-badge)
+![](https://img.shields.io/badge/WTForms-2.2.1-green.svg?longCache=true&style=for-the-badge)
+![](https://img.shields.io/badge/gunicorn-19.9.0-green.svg?longCache=true&style=for-the-badge)
+![](https://img.shields.io/badge/beautifulsoup4-4.6.3-green.svg?longCache=true&style=for-the-badge)
+
 macOS<br>
 Python 3.7 (or above)<br>
 Brew<br>
@@ -12,11 +17,15 @@ After clone repo, run these script in terminal.
 pip install flask
 pip install flask-wtf
 pip install flask gunicorn
+pip install beautifulsoup4
+pip install lxml
+pip install html5lib
+pip install requests
 ```
 
 Run
 ```
-python main.py
+python app.py
 ```
 
 # Deploy to HeroKu
@@ -56,7 +65,7 @@ Push To HeroKu and run
 git add .
 git commit -am 'Something just did'
 git push heroku master
-cat cat Procfile
+cat Procfile
 ```
 
 

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import SelectField, StringField, SubmitField, IntegerField, FloatField, DecimalField
+from wtforms import SelectField, StringField, PasswordField, SubmitField, IntegerField, FloatField
 from wtforms.validators import DataRequired, InputRequired, Length, NumberRange, Regexp
 
 # 神選之物
@@ -16,15 +16,43 @@ class DiffToChoiceForm(FlaskForm):
 # 油耗計算 / GasPricePerKm
 class GasPricePerKmForm(FlaskForm):
 	mileage = StringField(
-		'Trip 里程數',
-		validators=[
-			DataRequired(),
-			Regexp(regex='\d+',message='數字啦幹')
-		])
+				'Trip 里程數',
+				validators=[
+					DataRequired(),
+					Regexp(regex='\d+',message='數字啦幹')
+				])
 	oil = StringField(
-		'加了多少公升 ?',
-		validators=[
-			DataRequired(),
-			Regexp(regex='\d+',message='數字啦幹')
-		])
+			'加了多少公升 ?',
+			validators=[
+				DataRequired(),
+				Regexp(regex='\d+',message='數字啦幹')
+			])
 	submit = SubmitField('幫我算算')
+
+# 漂亮的考試系統 / BeautifulExamForm
+class BeautifulExamForm(FlaskForm):
+	username = StringField(
+				'請輸入學號',
+				validators=[
+					DataRequired(),
+				])
+	password = PasswordField(
+				'請輸入密碼',
+				validators=[
+					DataRequired(),
+				])
+	submit = SubmitField('取得考試時間')
+
+class AutoExamForm(FlaskForm):
+	submit = SubmitField('提交')
+
+class WorkingForm(FlaskForm):
+	submit = SubmitField('提交')
+
+
+
+
+
+
+
+
