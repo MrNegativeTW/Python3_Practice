@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, flash, request
+from flask import Flask, render_template, url_for, flash, request, redirect
 
 # Custom WTFroms
 from forms import DiffToChoiceForm, GasPricePerKmForm, BeautifulExamForm, AutoExamForm, UpperForm
@@ -73,7 +73,7 @@ def Upper():
 	if form.validate_on_submit():
 		text = form.textin.data
 		if text == '0':
-			return render_template('index.html')
+			return redirect('../')
 		# Split sentences/text by dot, save in otext / 使用句點分割句子，存於 otext
 		otext = text.split('. ')
 		# Remove dot and space / 移除句首和句尾的空格和句點
@@ -93,8 +93,6 @@ def Upper():
 		return render_template('Upper.html', form=form, results=results)
 
 	return render_template('Upper.html', form=form)
-
-
 
 
 

@@ -45,6 +45,28 @@ class BeautifulExamForm(FlaskForm):
 
 class AutoExamForm(FlaskForm):
 	submit = SubmitField('提交')
+	usernamef = StringField(
+				'請輸入學校學號：',
+				validators=[
+					DataRequired(),
+				])
+	passwordf = PasswordField(
+				'請輸入學校密碼：',
+				validators=[
+					DataRequired(),
+				])
+	usernameg = StringField(
+				'請輸入 Google 帳號：',
+				validators=[
+					DataRequired(),
+				])
+	passwordg = PasswordField(
+				'請輸入 Google 密碼：',
+				validators=[
+					DataRequired(),
+				])
+	submit = SubmitField('取得考試時間')
+
 
 class UpperForm(FlaskForm):
 	textin = StringField('請輸入要轉換的句子',
