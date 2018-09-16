@@ -31,12 +31,12 @@ class GasPricePerKmForm(FlaskForm):
 
 # 漂亮的考試系統 / BeautifulExamForm
 class BeautifulExamForm(FlaskForm):
-	username = StringField(
+	usernamef = StringField(
 				'請輸入學號',
 				validators=[
 					DataRequired(),
 				])
-	password = PasswordField(
+	passwordf = PasswordField(
 				'請輸入密碼',
 				validators=[
 					DataRequired(),
@@ -46,8 +46,11 @@ class BeautifulExamForm(FlaskForm):
 class AutoExamForm(FlaskForm):
 	submit = SubmitField('提交')
 
-class WorkingForm(FlaskForm):
-	submit = SubmitField('提交')
+class UpperForm(FlaskForm):
+	textin = StringField('請輸入要轉換的句子',
+				validators=[DataRequired()
+				])
+	submit = SubmitField('轉換')
 
 
 

@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block Content %}
+<div class="container global-margin-top-16">
+
+	<div class="jumbotron jumbotron-padding">
+		<div class="jumbotron-title">大小寫</div>
+		<div class="lead">這是 台東大學資訊工程系的演算法作業(轉學生才有)，然後我就把第三題拿來做了，做完之後順手架在這邊。</div>
+		<hr>
+		<p>
+		這邊的功能跟作業要求的一樣，輸入以下例句會自動轉大寫，輸入 0 會中斷程式(導回首頁)<br>
+		使用方法：<br>
+		1. 填入英文句子<br>
+		2. 按下轉換<br>
+		例句：<br>
+		the princess was speechless. she felt very sorry indeed that she had been so unkind to the frog.<br>
+		next, the frog drank from her little golden cup until it was quite empty.
+		</p>
+	</div>
+
+	<div class="row">
+
+		<div class="col-sm">
+			<form method="POST" action="">
+				<div class="form-group">
+				{{ form.hidden_tag() }}
+				{{ form.textin.label(class="form-control-label") }}
+				{{ form.textin(class="form-control") }}
+				</div>
+				<div class="form-group">
+					{{ form.submit(class="btn btn-outline-info") }}
+				</div>
+			</form>
+		</div>
+
+
+		<div class="col-sm">
+			<form method="POST" action="">
+				{{ results }}
+			</form>
+		</div>
+
+	</div>
+</div>
+{% endblock Content %}

@@ -1,33 +1,25 @@
 from bs4 import BeautifulSoup
 import requests
-import urllib3
-import http.cookiejar as cookielib
 
-cj = cookielib.CookieJar()
-br = mechanize.Browser()
-br.set_cookiejar(cj)
-br.open("https://portal.stust.edu.tw/examseat/login.aspx")
+def login():
+	loginPage = requests.get('https://portal.stust.edu.tw/examseat/login.aspx').text
+	# print(login.status_code)
 
-br.select_form(nr=0)
-br.form['username'] = 'username'
-br.form['password'] = 'password.'
-br.submit()
+	soup = BeautifulSoup(loginPage, 'lxml')
 
-print (br.response().read())
+	match = soup.find_all('td', align='center')
 
-# login = requests.get('https://portal.stust.edu.tw/examseat/login.aspx').text
-# # print(login.status_code)
+	print(match)
 
-# soup = BeautifulSoup(login, 'lxml')
+def examResults():
+	with open('ExamResults.htm') as html_file:
+		soup = BeautifulSoup(html_file, 'lxml')
 
-# source = soup.find('table')
+	for seat in soup.find_all('tr'):
+		time = seat.tr
 
-# inputf = table.tdbody.tr.td.input.text
+	print(time)
 
-# print(inputf)
+examResults()
 
 
-# >>> BeautifulSoup(html, 'html.parser').find("div",{"id":"cntPos"}).find("table",{"class":"cntTb"}).tbody.find_all("tr")[1].find("td",{"class":"cntBoxGreyLnk"}) is None
-# True
-# >>> BeautifulSoup(html, 'lxml').find("div",{"id":"cntPos"}).find("table",{"class":"cntTb"}).tbody.find_all("tr")[1].find("td",{"class":"cntBoxGreyLnk"}) is None
-# False

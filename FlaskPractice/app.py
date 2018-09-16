@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, flash, request
 
 # Custom WTFroms
-from forms import DiffToChoiceForm, GasPricePerKmForm, BeautifulExamForm, AutoExamForm, WorkingForm
+from forms import DiffToChoiceForm, GasPricePerKmForm, BeautifulExamForm, AutoExamForm, UpperForm
 
 # App Start
 app = Flask(__name__)
@@ -56,6 +56,8 @@ def GasPricePerKm():
 @app.route('/BeautifulExam', methods=['GET', 'POST'])
 def BeautifulExam():
 	form = BeautifulExamForm()
+	usernameb = form.usernamef.data
+	passwordb = form.passwordf.data
 	return render_template('BeautifulExam.html', form=form)
 
 # 自動考試 / AutoExam
@@ -64,13 +66,33 @@ def AutoExam():
 	form = AutoExamForm()
 	return render_template('AutoExam.html', form=form)
 
-# 待發展 / Working
-@app.route('/Working', methods=['GET', 'POST'])
-def Working():
-	form = WorkingForm()
+# 待發展 / Upper
+@app.route('/Upper', methods=['GET', 'POST'])
+def Upper():
+	form = UpperForm()
 	if form.validate_on_submit():
-		return render_template('Working.html', form=form, wow=wowww)
-	return render_template('Working.html', form=form)
+		text = form.textin.data
+		if text == '0':
+			return render_template('index.html')
+		# Split sentences/text by dot, save in otext / 使用句點分割句子，存於 otext
+		otext = text.split('. ')
+		# Remove dot and space / 移除句首和句尾的空格和句點
+		trimmed = [
+			sentence.strip()
+			for sentence in otext
+			]
+		# Change first letter to upper / 句首變大寫
+		upper = [
+			sentence[0].upper() + sentence[1:]
+			for sentence in trimmed
+			]
+		# Add dot and space to final results / 加入句點和空格
+		results = '. '.join(upper)
+		# Print Final Result / 輸出最後結果
+		# print(results)
+		return render_template('Upper.html', form=form, results=results)
+
+	return render_template('Upper.html', form=form)
 
 
 
