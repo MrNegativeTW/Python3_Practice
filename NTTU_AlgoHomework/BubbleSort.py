@@ -4,34 +4,38 @@
 
 # Clean Treminal Screen
 # Now can auto detect Windows or macOS
-import os, platform
-if platform.system() == 'Windows':
-    os.system('cls')
-else:
-    os.system('clear')
+# import os, platform
+# if platform.system() == 'Windows':
+#     os.system('cls')
+# else:
+#     os.system('clear')
 
-print('輸入測試數量：', end='')
+# number of test cases
 number = int(input())
 
-# Empty List / Number of items / swap times
-arr = []
-count = 1
-times = 0
+# Loop by number of test cases
+for a in range(0, number):
+# while number != 0:
+# 	number -= 1
+	# Claen how many times to swaps.
+	times = 0
 
-# User Enter
-while count <= number:
-	print('請輸入第',count,'項：', end='')
-	arr.append(int(input()))
-	count += 1
+	# Useless
+	input()
 
-# Length of List, how many times to loop
-for i in range(0, len(arr)-1):
-	# echo every elements in list
-	for j in range(0, len(arr)-i-1):
-        # Change Order
-		if arr[j] > arr[j+1]:
-			arr[j], arr[j+1] = arr[j+1], arr[j]
-			times += 1
+	# Enter test cases and split it by space
+	testCases = input().split()
 
-print('---------- Results ----------')
-print ('Optimal train swapping takes', times, 'swaps')
+	# Write each number into array
+	arr = [int(item) for item in testCases]
+
+	# Start Compar
+	for i in range(len(arr)):
+			# echo every elements in list
+			for j in range(0, len(arr)-i-1):
+		        # Change Order
+				if arr[j] > arr[j+1]:
+					arr[j], arr[j+1] = arr[j+1], arr[j]
+					times += 1
+	print ('Optimal train swapping takes', times, 'swaps.')
+	arr.clear()
