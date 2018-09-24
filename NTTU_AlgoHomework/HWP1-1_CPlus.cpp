@@ -12,6 +12,6 @@ int main(){
 				if(a[h]>a[k])ans++;
 			}
 		}
-		cout<<"Optimal train swapping takes "<<ans<<" swaps.";
+		cout<<"Optimal train swapping takes "<<ans<<" swaps."<<endl;
 	}
 } 
