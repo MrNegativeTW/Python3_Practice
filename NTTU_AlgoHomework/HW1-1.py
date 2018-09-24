@@ -1,5 +1,5 @@
 # HWP1-1
-# Author / TrevorWu
+# Author / KevinLee, TrevorWu
 # Date / 20180920
 
 # Clean Treminal Screen
@@ -14,7 +14,7 @@
 number = int(input())
 
 # Loop by number of test cases
-for a in range(0, number):
+for a in range(number):
 # while number != 0:
 # 	number -= 1
 	# Claen how many times to swaps.
@@ -24,18 +24,17 @@ for a in range(0, number):
 	input()
 
 	# Enter test cases and split it by space
-	testCases = input().split()
+	arr = input().split()
 
 	# Write each number into array
-	arr = [int(item) for item in testCases]
+	arr = [int(item) for item in arr]
 
 	# Start Compar
 	for i in range(len(arr)):
 			# echo every elements in list
-			for j in range(0, len(arr)-i-1):
+			for j in range(len(arr)-i-1):
 		        # Change Order
 				if arr[j] > arr[j+1]:
 					arr[j], arr[j+1] = arr[j+1], arr[j]
 					times += 1
 	print ('Optimal train swapping takes', times, 'swaps.')
-	arr.clear()
