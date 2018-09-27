@@ -12,15 +12,19 @@ def login():
 	print(match)
 
 def examResults():
-	with open('ExamResults.htm', encoding = 'utf8') as html_file:
+	with open('ExamResultOriginal.htm', encoding = 'utf8') as html_file:
 		soup = BeautifulSoup(html_file, 'lxml')
 
 	# Get Table of Exam Information
-	for seat in soup.find_all('table', id="DataGrid1"):
-		trrr = seat.find_all('tr')
-		print(trrr)
-			# for trr in seat.tr:
-			# 	print(trr)
+	data = []
+	table = soup.find('table', id='DataGrid1')
+	rows = table.find_all('tr')
 
-
+	for row in rows:
+		cols = row.find_all('td')
+		cols = [ele.text.strip() for ele in cols]
+		# Get rid of empty values
+		data.append([ele for ele in cols if ele])
+	print(data)
+	
 examResults()
