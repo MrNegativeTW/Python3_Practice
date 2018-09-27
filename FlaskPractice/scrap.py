@@ -12,14 +12,15 @@ def login():
 	print(match)
 
 def examResults():
-	with open('ExamResults.htm') as html_file:
+	with open('ExamResults.htm', encoding = 'utf8') as html_file:
 		soup = BeautifulSoup(html_file, 'lxml')
 
-	for seat in soup.find_all('tr'):
-		time = seat.tr
+	# Get Table of Exam Information
+	for seat in soup.find_all('table', id="DataGrid1"):
+		trrr = seat.find_all('tr')
+		print(trrr)
+			# for trr in seat.tr:
+			# 	print(trr)
 
-	print(time)
 
 examResults()
-
-
