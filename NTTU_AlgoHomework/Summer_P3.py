@@ -32,7 +32,7 @@ while text != '0':
 		]
 	# Change first letter to upper / 句首變大寫
 	upper = [
-		sentence[0].upper() + sentence[1:]
+		sentence[0].upper() + sentence[1:]	
 		for sentence in trimmed
 		]
 	# Add dot and space to final results / 加入句點和空格

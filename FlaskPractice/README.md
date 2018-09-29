@@ -12,7 +12,8 @@ HeroKu Acount<br>
 **IMPORTANT : Extremely Ultra Super fast Internet Connection**<br>
 
 # Local Deploy
-After clone repo, run these script in terminal.
+After clone repo, simply run `InstallModule.py`<br>
+Or run these script in terminal.
 ```
 pip install flask
 pip install flask-wtf
