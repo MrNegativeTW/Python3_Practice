@@ -1,16 +1,25 @@
 from flask import Flask, render_template, url_for, flash, request, redirect
-
+# import scrap
 # Custom WTFroms
 from forms import DiffToChoiceForm, GasPricePerKmForm, BeautifulExamForm, AutoExamForm, UpperForm
+
+from bs4 import BeautifulSoup
+import requests
+
+
 
 # App Start
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'a83c51c8b7fc804eb395d7c1d753fa28'
 
+
+
 # Index
 @app.route('/')
 def hello():
 	return render_template('index.html')
+
+
 
 # 神選之物 / DiffToChoice
 @app.route('/DiffToChoice', methods=['GET', 'POST'])
@@ -31,12 +40,16 @@ def DiffToChoice():
 		ans = random.choice(qu)
 		return render_template('DiffToChoice.html',title='油耗計算', form=form, ans=ans)
 
+
+
 # ToGoogle
 @app.route('/ToGoogle')
 def ToGoogle():
 	import webbrowser
 	webbrowser.open('https://google.com')
 	return render_template('ToGoogle.html', title='ToGoogle')
+
+
 
 # 油耗計算 / GasPricePerKm
 @app.route('/GasPricePerKm', methods=['GET', 'POST'])
@@ -52,13 +65,47 @@ def GasPricePerKm():
 
 	return render_template('GasPricePerKm.html',title='油耗計算', form=form)
 
+
+
+
+
+
 # 漂亮的考試時間 / BeautifulExam
 @app.route('/BeautifulExam', methods=['GET', 'POST'])
 def BeautifulExam():
 	form = BeautifulExamForm()
 	usernameb = form.usernamef.data
 	passwordb = form.passwordf.data
-	return render_template('BeautifulExam.html', form=form)
+
+	with open('ExamResultOriginal.htm', encoding = 'utf8') as html_file:
+		soup = BeautifulSoup(html_file, 'lxml')
+
+	# Get Table of Exam Information
+	global data
+	data = []
+	table = soup.find('table', id='DataGrid1')
+	rows = table.find_all('tr')
+
+	for row in rows:
+		cols = row.find_all('td')
+		cols = [ele.text.strip() for ele in cols]
+		# Get rid of empty values
+		data.append([ele for ele in cols if ele])
+
+	for each in data:
+		time = []
+		time.append(each[0])
+		print(time)
+
+	return render_template('BeautifulExam.html', form=form, time=time)
+
+
+
+
+
+
+
+
 
 # 自動考試 / AutoExam
 @app.route('/AutoExam', methods=['GET', 'POST'])
@@ -66,7 +113,9 @@ def AutoExam():
 	form = AutoExamForm()
 	return render_template('AutoExam.html', form=form)
 
-# 待發展 / Upper
+
+
+# 大小寫 / Upper
 @app.route('/Upper', methods=['GET', 'POST'])
 def Upper():
 	form = UpperForm()
@@ -93,6 +142,8 @@ def Upper():
 		return render_template('Upper.html', form=form, results=results)
 
 	return render_template('Upper.html', form=form)
+
+
 
 
 
