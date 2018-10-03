@@ -1,5 +1,4 @@
 from flask import Flask, render_template, url_for, flash, request, redirect
-# import scrap
 # Custom WTFroms
 from forms import DiffToChoiceForm, GasPricePerKmForm, BeautifulExamForm, AutoExamForm, UpperForm
 
@@ -76,13 +75,14 @@ def BeautifulExam():
 	form = BeautifulExamForm()
 	usernameb = form.usernamef.data
 	passwordb = form.passwordf.data
-
+	#-----ExamResults-----
 	with open('ExamResultOriginal.htm', encoding = 'utf8') as html_file:
 		soup = BeautifulSoup(html_file, 'lxml')
 
 	# Get Table of Exam Information
-	global data
 	data = []
+
+	# Find Target
 	table = soup.find('table', id='DataGrid1')
 	rows = table.find_all('tr')
 
@@ -92,15 +92,37 @@ def BeautifulExam():
 		# Get rid of empty values
 		data.append([ele for ele in cols if ele])
 
+	date = []
+	period = []
+	timeOfExam = []
+	room = []
+	row = []
+	col = []
+	subject = []
 	for each in data:
-		time = []
-		time.append(each[0])
-		print(time)
 
-	return render_template('BeautifulExam.html', form=form, time=time)
+		date.append(each[0])
+		period.append(each[1])
+		timeOfExam.append(each[2])
+		room.append(each[3])
+		row.append(each[4])
+		col.append(each[5])
+		subject.append(each[6])
 
+	lengh = len(date)
+	print(date)
+	print(period)
+	print(timeOfExam)
+	print(room)
+	print(row)
+	print(col)
+	print(subject)
+	#-----
 
-
+	return render_template('BeautifulExam.html', 
+		form=form, data=data, lengh=lengh, date=date, preiod=period, 
+		timeOfExam=timeOfExam, room=room, row=row, 
+		col=col, subject=subject)
 
 
 

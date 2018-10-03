@@ -31,21 +31,64 @@
 		</div>
 
 		<div class="col-sm">
-			{% for times in time %}
-			{{ times }}
-			{% endfor %}
-
+			<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">1</th>
+						<th scope="col">2</th>
+						<th scope="col">3</th>
+						<th scope="col">4</th>
+						<th scope="col">5</th>
+						<th scope="col">6</th>
+					</tr>
+				</thead>
+				<tbody>
+				    <tr>
+						{% for datas in data %}
+							<td>{{ datas.0 }}</td>
+				    	{% endfor %}
+					</tr>
+					<tr>
+						{% for datas in data %}
+							<td>{{ datas.1 }}</td>
+						{% endfor %}
+					</tr>
+					<tr>
+						{% for datas in data %}
+							<td>{{ datas.2 }}</td>
+						{% endfor %}
+					</tr>
+					<tr>
+						{% for datas in data %}
+							<td>{{ datas.3 }}</td>
+						{% endfor %}
+					</tr>
+					<tr>
+						{% for datas in data %}
+							<td>{{ datas.4 }}</td>
+						{% endfor %}
+					</tr>
+					<tr>
+						{% for datas in data %}
+							<td>{{ datas.5 }}</td>
+						{% endfor %}
+					</tr>
+					<tr>
+						{% for datas in data %}
+							<td>{{ datas.6 }}</td>
+						{% endfor %}
+					</tr>
+				</tbody>
+			</table>
 		</div>
 
-
-
-
-
-
-
-
-
-
+		</div>
 	</div>
+
+
+
+
 </div>
 {% endblock Content %}

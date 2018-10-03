@@ -28,6 +28,7 @@ def examResults():
 		# Get rid of empty values
 		data.append([ele for ele in cols if ele])
 
+
 	date = []
 	period = []
 	timeOfExam = []
@@ -44,6 +45,7 @@ def examResults():
 		col.append(each[5])
 		subject.append(each[6])
 
+	lengh = len(date)
 	print(date)
 	print(period)
 	print(timeOfExam)
