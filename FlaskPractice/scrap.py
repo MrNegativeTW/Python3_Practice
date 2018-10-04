@@ -11,6 +11,33 @@ def login():
 
 	print(match)
 
+
+def loginTest():
+	r = requests.get('https://portal.stust.edu.tw/examseat/login.aspx', auth=('user', 'pass'))
+	print(r.status_code)
+	# with requests.Session() as re:
+	# 	url = 'https://portal.stust.edu.tw/examseat/login.aspx'
+	# 	USERNAME = ''
+	# 	PASSWORD = ''
+	# 	re.get(url)
+	# 	csrftoken = re.cookies['csrftoken']
+	# 	# csrfmiddlewaretoken
+	# 	login_data = dict(__EVENTVALIDATION=csrftoken, 
+	# 		txtStud_No=USERNAME, 
+	# 		txtPasswd=PASSWORD, 
+	# 		next='/'
+	# 		)
+	# 	re.post(url, 
+	# 		data=login_data, 
+	# 		headers={"Referer": "http://portal.stust.edu.tw/examseat/Default.aspx"}
+	# 		)
+	# 	page = re.get('http://portal.stust.edu.tw/examseat/ShowResult.aspx')
+	# 	print (page.content)
+
+
+loginTest()
+
+# Get Exam Result
 def examResults():
 	with open('ExamResultOriginal.htm', encoding = 'utf8') as html_file:
 		soup = BeautifulSoup(html_file, 'lxml')
@@ -54,4 +81,4 @@ def examResults():
 	print(col)
 	print(subject)
 	
-examResults()
+# examResults()

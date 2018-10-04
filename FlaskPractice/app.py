@@ -1,17 +1,14 @@
 from flask import Flask, render_template, url_for, flash, request, redirect
-# Custom WTFroms
+# -----Custom WTFroms-----
 from forms import DiffToChoiceForm, GasPricePerKmForm, BeautifulExamForm, AutoExamForm, UpperForm
 
+# -----For Exam Service-----
 from bs4 import BeautifulSoup
 import requests
-
-
 
 # App Start
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'a83c51c8b7fc804eb395d7c1d753fa28'
-
-
 
 # Index
 @app.route('/')
