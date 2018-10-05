@@ -13,16 +13,26 @@ def login():
 
 
 def loginTest():
-	r = requests.get('https://portal.stust.edu.tw/examseat/login.aspx', auth=('user', 'pass'))
-	print(r.status_code)
+	payload = {'txtStud_No': '4a6f0072', 'txtPasswd': '123'}
+	url = 'http://portal.stust.edu.tw/examseat/Default.aspx'
+	res = requests.post(url, data=payload)
+	r = requests.get('http://portal.stust.edu.tw/examseat/Default.aspx', auth=('user', 'pass'))
+	print(r.text)
+
+
+
+	# r = requests.get('https://portal.stust.edu.tw/examseat/login.aspx', auth=('testuser', 'pass'))
+	# print(r.status_code)
+	# print(r)
+
 	# with requests.Session() as re:
 	# 	url = 'https://portal.stust.edu.tw/examseat/login.aspx'
 	# 	USERNAME = ''
 	# 	PASSWORD = ''
 	# 	re.get(url)
-	# 	csrftoken = re.cookies['csrftoken']
+	# 	# csrftoken = re.cookies['csrftoken']
 	# 	# csrfmiddlewaretoken
-	# 	login_data = dict(__EVENTVALIDATION=csrftoken, 
+	# 	login_data = dict(
 	# 		txtStud_No=USERNAME, 
 	# 		txtPasswd=PASSWORD, 
 	# 		next='/'
