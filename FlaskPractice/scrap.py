@@ -13,17 +13,27 @@ def login():
 
 
 def loginTest():
-	payload = {'txtStud_No': '4a6f0072', 'txtPasswd': '123'}
-	url = 'http://portal.stust.edu.tw/examseat/Default.aspx'
-	res = requests.post(url, data=payload)
-	r = requests.get('http://portal.stust.edu.tw/examseat/Default.aspx', auth=('user', 'pass'))
-	print(r.text)
-
-
-
-	# r = requests.get('https://portal.stust.edu.tw/examseat/login.aspx', auth=('testuser', 'pass'))
-	# print(r.status_code)
-	# print(r)
+	
+	with requests.Session() as s:
+		page = s.get('https://portal.stust.edu.tw/examseat/login.aspx')
+		soup = BeautifulSoup(page.content, 'lxml')
+		# VIEWSTATE=soup.find(id="__VIEWSTATE")['value']
+		# VIEWSTATEGENERATOR=soup.find(id="__VIEWSTATEGENERATOR")['value']
+		# EVENTVALIDATION=soup.find(id="__EVENTVALIDATION")['value']
+		data = {
+			# '__VIEWSTATE':VIEWSTATE,
+			# '__VIEWSTATEGENERATOR':VIEWSTATEGENERATOR,
+			# '__EVENTVALIDATION':EVENTVALIDATION,
+			'txtStud_No': '4A6F0072', 
+			'txtPasswd': 'wow',
+			'Button1': '登入'
+		}
+		data["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
+		data["__VIEWSTATEGENERATOR"] = soup.select_one("#__VIEWSTATEGENERATOR")["value"]
+		data["__EVENTVALIDATION"] = soup.select_one("#__EVENTVALIDATION")["value"]
+		s.post('https://portal.stust.edu.tw/examseat/login.aspx', data=data)
+		openPage = s.get('https://portal.stust.edu.tw/examseat/Default.aspx')
+		print(openPage.text)
 
 	# with requests.Session() as re:
 	# 	url = 'https://portal.stust.edu.tw/examseat/login.aspx'
