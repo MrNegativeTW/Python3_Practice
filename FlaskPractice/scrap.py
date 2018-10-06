@@ -6,7 +6,7 @@ def login():
 	# Let's get some exam information, ready?
 	with requests.Session() as s:
 		
-		#First Step - Login exam seat system
+		# -----First Step - Login exam seat system-----
 		page = s.get('https://portal.stust.edu.tw/examseat/login.aspx')
 		soup = BeautifulSoup(page.content, 'lxml')
 
@@ -24,7 +24,7 @@ def login():
 		s.post('https://portal.stust.edu.tw/examseat/login.aspx', data=payload_loginPage)
 
 		
-		# Second Step - Select exam type
+		# -----Second Step - Select exam type-----
 		page = s.get('https://portal.stust.edu.tw/examseat/Default.aspx')
 		# Select that fucking type of exam
 		payload_examType = {
@@ -38,7 +38,7 @@ def login():
 		s.post('https://portal.stust.edu.tw/examseat/Default.aspx', data=payload_examType)
 
 
-		# Third Step - Now we got what we need
+		# -----Third Step - Now we got what we need-----
 		global openPage
 		openPage = s.get('http://portal.stust.edu.tw/examseat/ShowResult.aspx').text
 		# print(openPage.text)
@@ -53,7 +53,7 @@ def examResults():
 	# Empty list
 	data = []
 
-	# Find Target
+	# Find Target table
 	table = soup.find('table', id='DataGrid1')
 	rows = table.find_all('tr')
 
