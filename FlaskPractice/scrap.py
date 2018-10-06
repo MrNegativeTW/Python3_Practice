@@ -1,68 +1,56 @@
 from bs4 import BeautifulSoup
 import requests
 
+# Let me in
 def login():
-	loginPage = requests.get('https://portal.stust.edu.tw/examseat/login.aspx').text
-	# print(login.status_code)
-
-	soup = BeautifulSoup(loginPage, 'lxml')
-
-	match = soup.find_all('td', align='center')
-
-	print(match)
-
-
-def loginTest():
-	
+	# Let's get some exam information, ready?
 	with requests.Session() as s:
+		
+		#First Step - Login exam seat system
 		page = s.get('https://portal.stust.edu.tw/examseat/login.aspx')
 		soup = BeautifulSoup(page.content, 'lxml')
-		# VIEWSTATE=soup.find(id="__VIEWSTATE")['value']
-		# VIEWSTATEGENERATOR=soup.find(id="__VIEWSTATEGENERATOR")['value']
-		# EVENTVALIDATION=soup.find(id="__EVENTVALIDATION")['value']
-		data = {
-			# '__VIEWSTATE':VIEWSTATE,
-			# '__VIEWSTATEGENERATOR':VIEWSTATEGENERATOR,
-			# '__EVENTVALIDATION':EVENTVALIDATION,
+
+		# Username and password to login
+		payload_loginPage = {
 			'txtStud_No': '4A6F0072', 
 			'txtPasswd': 'wow',
 			'Button1': '登入'
 		}
-		data["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
-		data["__VIEWSTATEGENERATOR"] = soup.select_one("#__VIEWSTATEGENERATOR")["value"]
-		data["__EVENTVALIDATION"] = soup.select_one("#__EVENTVALIDATION")["value"]
-		s.post('https://portal.stust.edu.tw/examseat/login.aspx', data=data)
-		openPage = s.get('https://portal.stust.edu.tw/examseat/Default.aspx')
-		print(openPage.text)
 
-	# with requests.Session() as re:
-	# 	url = 'https://portal.stust.edu.tw/examseat/login.aspx'
-	# 	USERNAME = ''
-	# 	PASSWORD = ''
-	# 	re.get(url)
-	# 	# csrftoken = re.cookies['csrftoken']
-	# 	# csrfmiddlewaretoken
-	# 	login_data = dict(
-	# 		txtStud_No=USERNAME, 
-	# 		txtPasswd=PASSWORD, 
-	# 		next='/'
-	# 		)
-	# 	re.post(url, 
-	# 		data=login_data, 
-	# 		headers={"Referer": "http://portal.stust.edu.tw/examseat/Default.aspx"}
-	# 		)
-	# 	page = re.get('http://portal.stust.edu.tw/examseat/ShowResult.aspx')
-	# 	print (page.content)
+		# For asp.net
+		payload_loginPage["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
+		payload_loginPage["__VIEWSTATEGENERATOR"] = soup.select_one("#__VIEWSTATEGENERATOR")["value"]
+		payload_loginPage["__EVENTVALIDATION"] = soup.select_one("#__EVENTVALIDATION")["value"]
+		s.post('https://portal.stust.edu.tw/examseat/login.aspx', data=payload_loginPage)
+
+		
+		# Second Step - Select exam type
+		page = s.get('https://portal.stust.edu.tw/examseat/Default.aspx')
+		# Select that fucking type of exam
+		payload_examType = {
+			'exam_type': 'examTypeValue', 
+			'Button1': '開始查詢'
+		}
+		# For asp.net
+		payload_examType["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
+		payload_examType["__VIEWSTATEGENERATOR"] = soup.select_one("#__VIEWSTATEGENERATOR")["value"]
+		payload_examType["__EVENTVALIDATION"] = soup.select_one("#__EVENTVALIDATION")["value"]
+		s.post('https://portal.stust.edu.tw/examseat/Default.aspx', data=payload_examType)
 
 
-loginTest()
+		# Third Step - Now we got what we need
+		global openPage
+		openPage = s.get('http://portal.stust.edu.tw/examseat/ShowResult.aspx').text
+		# print(openPage.text)
+
+login()
 
 # Get Exam Result
 def examResults():
-	with open('ExamResultOriginal.htm', encoding = 'utf8') as html_file:
-		soup = BeautifulSoup(html_file, 'lxml')
+	# with open('ExamResultOriginal.htm', encoding = 'utf8') as html_file:
+	soup = BeautifulSoup(openPage, 'lxml')
 
-	# Get Table of Exam Information
+	# Empty list
 	data = []
 
 	# Find Target
@@ -101,4 +89,4 @@ def examResults():
 	print(col)
 	print(subject)
 	
-# examResults()
+examResults()
