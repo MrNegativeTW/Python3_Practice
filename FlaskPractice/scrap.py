@@ -1,8 +1,11 @@
 from bs4 import BeautifulSoup
 import requests
 
-# Let me in
-def login():
+
+
+
+# 登入系統
+def login(usernameb, passwordb):
 	# Let's get some exam information, ready?
 	with requests.Session() as s:
 		
@@ -12,8 +15,8 @@ def login():
 
 		# Username and password to login
 		payload_loginPage = {
-			'txtStud_No': '4A6F0072', 
-			'txtPasswd': 'wow',
+			'txtStud_No': usernameb, 
+			'txtPasswd': passwordb,
 			'Button1': '登入'
 		}
 
@@ -43,14 +46,21 @@ def login():
 		openPage = s.get('http://portal.stust.edu.tw/examseat/ShowResult.aspx').text
 		# print(openPage.text)
 
-login()
+login(1, 1)
 
-# Get Exam Result
+
+
+
+
+
+
+# 取得考試座位資訊
 def examResults():
 	# with open('ExamResultOriginal.htm', encoding = 'utf8') as html_file:
 	soup = BeautifulSoup(openPage, 'lxml')
 
 	# Empty list
+	global data
 	data = []
 
 	# Find Target table
@@ -63,30 +73,39 @@ def examResults():
 		# Get rid of empty values
 		data.append([ele for ele in cols if ele])
 
+	global date
+	global period
+	global timeOfExam
+	global room
+	global rowsss
+	global col
+	global subject
 
 	date = []
 	period = []
 	timeOfExam = []
 	room = []
-	row = []
+	rowsss = []
 	col = []
 	subject = []
+
 	for each in data:
 		date.append(each[0])
 		period.append(each[1])
 		timeOfExam.append(each[2])
 		room.append(each[3])
-		row.append(each[4])
+		rowsss.append(each[4])
 		col.append(each[5])
 		subject.append(each[6])
 
-	lengh = len(date)
-	print(date)
-	print(period)
-	print(timeOfExam)
-	print(room)
-	print(row)
-	print(col)
-	print(subject)
+	global dataLengh
+	dataLengh = len(date)
+	# print(date)
+	# print(period)
+	# print(timeOfExam)
+	# print(room)
+	# print(rowsss)
+	# print(col)
+	# print(subject)
 	
 examResults()

@@ -5,15 +5,27 @@ from forms import DiffToChoiceForm, GasPricePerKmForm, BeautifulExamForm, AutoEx
 # -----For Exam Service-----
 from bs4 import BeautifulSoup
 import requests
+from scrap import login, examResults, data, date, period, timeOfExam, room, rowsss, col, subject, dataLengh
+
+
+
+
+
 
 # App Start
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'a83c51c8b7fc804eb395d7c1d753fa28'
 
+
+
+
+
 # Index
 @app.route('/')
 def hello():
 	return render_template('index.html')
+
+
 
 
 
@@ -38,12 +50,16 @@ def DiffToChoice():
 
 
 
+
+
 # ToGoogle
 @app.route('/ToGoogle')
 def ToGoogle():
 	import webbrowser
 	webbrowser.open('https://google.com')
 	return render_template('ToGoogle.html', title='ToGoogle')
+
+
 
 
 
@@ -63,26 +79,114 @@ def GasPricePerKm():
 
 
 
+
+
 # 漂亮的考試時間 / BeautifulExam
 @app.route('/BeautifulExam', methods=['GET', 'POST'])
 def BeautifulExam():
 	form = BeautifulExamForm()
-	usernameb = form.usernamef.data
-	passwordb = form.passwordf.data
-	
 
 	return render_template('BeautifulExam.html', 
-		form=form, 
+		form=form,
 		data=data, 
-		lengh=lengh, 
+		dataLengh=dataLengh, 
 		date=date, 
 		preiod=period, 
 		timeOfExam=timeOfExam, 
 		room=room, 
-		row=row, 
+		row=rowsss, 
 		col=col, 
 		subject=subject
 	)
+
+	if form.validate_on_submit():
+		usernameb = form.usernamef.data
+		passwordb = form.passwordf.data
+
+		login(usernameb, passwordb)
+		examResults()
+
+		return render_template('BeautifulExam.html', 
+		form=form, 
+		data=data, 
+		dataLengh=dataLengh, 
+		date=date, 
+		preiod=period, 
+		timeOfExam=timeOfExam, 
+		room=room, 
+		row=rowsss, 
+		col=col, 
+		subject=subject
+		)
+
+	# return render_template('BeautifulExam.html', 
+	# 	form=form, 
+	# 	data=data, 
+	# 	dataLengh=dataLengh, 
+	# 	date=date, 
+	# 	preiod=period, 
+	# 	timeOfExam=timeOfExam, 
+	# 	room=room, 
+	# 	row=rowsss, 
+	# 	col=col, 
+	# 	subject=subject
+	# 	)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -94,6 +198,8 @@ def BeautifulExam():
 def AutoExam():
 	form = AutoExamForm()
 	return render_template('AutoExam.html', form=form)
+
+
 
 
 

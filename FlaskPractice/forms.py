@@ -13,6 +13,10 @@ class DiffToChoiceForm(FlaskForm):
 	# add = SubmitField(label='加入')
 	submit = SubmitField('神啊 幫我選一個')
 
+
+
+
+
 # 油耗計算 / GasPricePerKm
 class GasPricePerKmForm(FlaskForm):
 	mileage = StringField(
@@ -29,12 +33,17 @@ class GasPricePerKmForm(FlaskForm):
 			])
 	submit = SubmitField('幫我算算')
 
+
+
+
+
 # 漂亮的考試系統 / BeautifulExamForm
 class BeautifulExamForm(FlaskForm):
 	usernamef = StringField(
 				'請輸入學號',
 				validators=[
 					DataRequired(),
+					Length(min=8)
 				])
 	passwordf = PasswordField(
 				'請輸入密碼',
@@ -42,6 +51,10 @@ class BeautifulExamForm(FlaskForm):
 					DataRequired(),
 				])
 	submit = SubmitField('取得考試時間')
+
+
+
+
 
 class AutoExamForm(FlaskForm):
 	submit = SubmitField('提交')
@@ -66,6 +79,10 @@ class AutoExamForm(FlaskForm):
 					DataRequired(),
 				])
 	submit = SubmitField('取得考試時間')
+
+
+
+
 
 
 class UpperForm(FlaskForm):
