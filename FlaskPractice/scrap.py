@@ -1,56 +1,67 @@
 from bs4 import BeautifulSoup
 import requests
-
-
+import urllib.request # S3
 
 
 # 登入系統
-def login(usernameb, passwordb):
-	# Let's get some exam information, ready?
+def login():
 	with requests.Session() as s:
-		
-		# -----First Step - Login exam seat system-----
+		'''
+		Step. 1
+		Get in to Exam seat system
+		'''
 		page = s.get('https://portal.stust.edu.tw/examseat/login.aspx')
 		soup = BeautifulSoup(page.content, 'lxml')
 
-		# Username and password to login
+		# Basic Login Information
 		payload_loginPage = {
-			'txtStud_No': usernameb, 
-			'txtPasswd': passwordb,
+			'txtStud_No': username, 
+			'txtPasswd': password,
 			'Button1': '登入'
 		}
 
 		# For asp.net
+		# payload_loginPage["txtStud_No"] = usernameb
+		# payload_loginPage["txtPasswd"] = passwordb
 		payload_loginPage["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
 		payload_loginPage["__VIEWSTATEGENERATOR"] = soup.select_one("#__VIEWSTATEGENERATOR")["value"]
 		payload_loginPage["__EVENTVALIDATION"] = soup.select_one("#__EVENTVALIDATION")["value"]
+
+		# POST data above to login page.
 		s.post('https://portal.stust.edu.tw/examseat/login.aspx', data=payload_loginPage)
 
-		
-		# -----Second Step - Select exam type-----
+
+		'''
+		Step. 2
+		Select Exam Type
+		'''
 		page = s.get('https://portal.stust.edu.tw/examseat/Default.aspx')
-		# Select that fucking type of exam
+
+		# Select Type
 		payload_examType = {
 			'exam_type': 'examTypeValue', 
 			'Button1': '開始查詢'
 		}
+
 		# For asp.net
 		payload_examType["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
 		payload_examType["__VIEWSTATEGENERATOR"] = soup.select_one("#__VIEWSTATEGENERATOR")["value"]
 		payload_examType["__EVENTVALIDATION"] = soup.select_one("#__EVENTVALIDATION")["value"]
+
+		# POST data above to type select page
 		s.post('https://portal.stust.edu.tw/examseat/Default.aspx', data=payload_examType)
 
-
-		# -----Third Step - Now we got what we need-----
+		'''
+		Step. 3
+		Get Result Page
+		The Question is, python GET the page what we need to fast, should GET after page complete loaded.
+		'''
 		global openPage
 		openPage = s.get('http://portal.stust.edu.tw/examseat/ShowResult.aspx').text
-		# print(openPage.text)
 
-login(1, 1)
+		print(openPage)
 
-
-
-
+login()
 
 
 
@@ -59,7 +70,7 @@ def examResults():
 	# with open('ExamResultOriginal.htm', encoding = 'utf8') as html_file:
 	soup = BeautifulSoup(openPage, 'lxml')
 
-	# Empty list
+	# Empty list, just... global it
 	global data
 	data = []
 
@@ -73,6 +84,7 @@ def examResults():
 		# Get rid of empty values
 		data.append([ele for ele in cols if ele])
 
+	# Global these empty lists
 	global date
 	global period
 	global timeOfExam
@@ -100,12 +112,14 @@ def examResults():
 
 	global dataLengh
 	dataLengh = len(date)
-	# print(date)
-	# print(period)
-	# print(timeOfExam)
-	# print(room)
-	# print(rowsss)
-	# print(col)
-	# print(subject)
+
+	# Debug
+	print(date)
+	print(period)
+	print(timeOfExam)
+	print(room)
+	print(rowsss)
+	print(col)
+	print(subject)
 	
 examResults()

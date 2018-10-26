@@ -11,9 +11,13 @@ itsdangerous==0.24
 Jinja2==2.10
 lxml==4.2.5
 MarkupSafe==1.0
+pipenv==2018.10.13
 requests==2.19.1
+selenium==3.14.1
 six==1.11.0
 urllib3==1.23
+virtualenv==16.0.0
+virtualenv-clone==0.4.0
 webencodings==0.5.1
 Werkzeug==0.14.1
 WTForms==2.2.1
