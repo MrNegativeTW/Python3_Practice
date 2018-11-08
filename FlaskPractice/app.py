@@ -85,7 +85,64 @@ def GasPricePerKm():
 @app.route('/BeautifulExam', methods=['GET', 'POST'])
 def BeautifulExam():
 	form = BeautifulExamForm()
+# --DELETE THESE CODE----------------------------------------------------------------------
+	with open('ExamResultOriginal2.html', encoding = 'utf8') as html_file:
+		soup = BeautifulSoup(html_file, 'lxml')
 
+	# soup = BeautifulSoup(openPage, 'lxml')
+
+	# Empty list, just... global it
+	global data
+	data = []
+
+	# Find Target table
+	table = soup.find('table', id='DataGrid1')
+	rows = table.find_all('tr')
+
+	for row in rows:
+		cols = row.find_all('td')
+		cols = [ele.text.strip() for ele in cols]
+		# Get rid of empty values
+		data.append([ele for ele in cols if ele])
+
+	# Global these empty lists
+	global date
+	global period
+	global timeOfExam
+	global room
+	global rowsss
+	global col
+	global subject
+
+	date = []
+	period = []
+	timeOfExam = []
+	room = []
+	rowsss = []
+	col = []
+	subject = []
+
+	for each in data:
+		date.append(each[0])
+		period.append(each[1])
+		timeOfExam.append(each[2])
+		room.append(each[3])
+		rowsss.append(each[4])
+		col.append(each[5])
+		subject.append(each[6])
+
+	global dataLengh
+	dataLengh = len(date)
+
+	# Debug
+	print(date)
+	print(period)
+	print(timeOfExam)
+	print(room)
+	print(rowsss)
+	print(col)
+	print(subject)
+# ---------------------------------------------------
 	return render_template('BeautifulExam.html', 
 		form=form,
 		data=data, 

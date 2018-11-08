@@ -61,14 +61,17 @@ def login():
 
 		print(openPage)
 
-login()
+# login()
 
 
 
 # 取得考試座位資訊
 def examResults():
 	# with open('ExamResultOriginal.htm', encoding = 'utf8') as html_file:
-	soup = BeautifulSoup(openPage, 'lxml')
+	with open('ExamResultOriginal2.html', encoding = 'utf8') as html_file:
+		soup = BeautifulSoup(html_file, 'lxml')
+
+	# soup = BeautifulSoup(openPage, 'lxml')
 
 	# Empty list, just... global it
 	global data
