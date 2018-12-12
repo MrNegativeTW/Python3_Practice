@@ -4,7 +4,7 @@ import urllib.request # S3
 
 
 # 登入系統
-def login():
+def login(usernameb, passwordb):
 	with requests.Session() as s:
 		'''
 		Step. 1
@@ -15,14 +15,14 @@ def login():
 
 		# Basic Login Information
 		payload_loginPage = {
-			'txtStud_No': username, 
-			'txtPasswd': password,
+			# 'txtStud_No': username, 
+			# 'txtPasswd': password,
 			'Button1': '登入'
 		}
 
 		# For asp.net
-		# payload_loginPage["txtStud_No"] = usernameb
-		# payload_loginPage["txtPasswd"] = passwordb
+		payload_loginPage["txtStud_No"] = usernameb
+		payload_loginPage["txtPasswd"] = passwordb
 		payload_loginPage["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
 		payload_loginPage["__VIEWSTATEGENERATOR"] = soup.select_one("#__VIEWSTATEGENERATOR")["value"]
 		payload_loginPage["__EVENTVALIDATION"] = soup.select_one("#__EVENTVALIDATION")["value"]
@@ -36,7 +36,7 @@ def login():
 		Select Exam Type
 		'''
 		page = s.get('https://portal.stust.edu.tw/examseat/Default.aspx')
-
+		print(s.get('https://portal.stust.edu.tw/examseat/Default.aspx').text)
 		# Select Type
 		payload_examType = {
 			'exam_type': 'examTypeValue', 
@@ -59,19 +59,22 @@ def login():
 		global openPage
 		openPage = s.get('http://portal.stust.edu.tw/examseat/ShowResult.aspx').text
 
-		print(openPage)
+		# For DEBUG
+		# print(openPage)
 
-# login()
+usernameb = '123'
+passwordb = '123'
+login(usernameb, passwordb)
 
 
 
 # 取得考試座位資訊
 def examResults():
 	# with open('ExamResultOriginal.htm', encoding = 'utf8') as html_file:
-	with open('ExamResultOriginal2.html', encoding = 'utf8') as html_file:
-		soup = BeautifulSoup(html_file, 'lxml')
+	# with open('ExamResultOriginal2.html', encoding = 'utf8') as html_file:
+	# 	soup = BeautifulSoup(html_file, 'lxml')
 
-	# soup = BeautifulSoup(openPage, 'lxml')
+	soup = BeautifulSoup(openPage, 'lxml')
 
 	# Empty list, just... global it
 	global data
@@ -117,12 +120,12 @@ def examResults():
 	dataLengh = len(date)
 
 	# Debug
-	print(date)
-	print(period)
-	print(timeOfExam)
-	print(room)
-	print(rowsss)
-	print(col)
-	print(subject)
+	# print(date)
+	# print(period)
+	# print(timeOfExam)
+	# print(room)
+	# print(rowsss)
+	# print(col)
+	# print(subject)
 	
 examResults()
