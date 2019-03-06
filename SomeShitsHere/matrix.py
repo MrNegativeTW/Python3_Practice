@@ -29,6 +29,7 @@ def magicSquare(n):
 
 	return matrix
 
-matrix = magicSquare(int(input()))
+# matrix = magicSquare(int(input()))
+matrix = magicSquare(5)
 for result in matrix:
 	print(result)
