@@ -19,28 +19,25 @@ def hello():
     password = form.password.data
 
     if request.method == 'GET':
-        return render_template('index.html', form=form)
+        return render_template('index.html', form=form, post=False)
     elif request.method == 'POST':
         client = datastore.Client()
-
         #　Method: query it
         query = client.query(kind='account')
         query = query.add_filter('EmailAddress', '=', email)
         query = query.add_filter('Password', '=', password)
         result = query.fetch()
         # <Entity('account', 5643280054222848) {'Password': 'password', 'FirstName': 'John', 'EmailAddress': 'john@gmail.com'}>
+        resultLists = list(result)
 
-        global firstName
-        for key, value in list(result)[0].items():
-            if key == 'FirstName':
-                firstName = value
-        print(firstName)
-
-        # Method: Iterator
-        # query_iterator = client.query(kind='account').fetch()
-        # for entity in query_iterator:
-
-        return render_template('index.html', form=form, accountName=firstName)
+        if len(resultLists) == 0:
+            return render_template('index.html', form=form, post=True)
+        else:
+            global firstName
+            for key, value in resultLists[0].items():
+                if key == 'FirstName':
+                    firstName = value
+            return render_template('index.html', form=form, post=True, accountName=firstName)
 
 
 if __name__ == '__main__':

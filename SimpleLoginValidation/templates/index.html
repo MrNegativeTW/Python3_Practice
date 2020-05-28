@@ -2,13 +2,13 @@
 {% block Content %}
 <div class="header-nightsky">
     <div class="hero">
-            <h1>登入啦</h1>
+            <h3 class="whiteText">登入啦</h1>
             <form method="POST" action="">
                 <div class="form-group">
                     {{ form.hidden_tag() }}
-                    {{ form.email.label(class="formWhiteText") }} 
+                    {{ form.email.label(class="whiteText") }} 
                     {{ form.email(class="form-control") }}
-                    {{ form.password.label(class="formWhiteText") }} 
+                    {{ form.password.label(class="whiteText") }} 
                     {{ form.password(class="form-control") }}
                 </div>
 
@@ -17,13 +17,17 @@
                 </div>
             </form>
 
+            {% if post %}
             <div>
                 {% if accountName %}
-                <h3 class="text-center formWhiteText">
-                    You're {{ accountName }} , am I right?
+                <h3 class="text-center whiteText">
+                    Welcome {{ accountName }} !
                 </h3>
+                {% else %}
+                    <img src="{{url_for('static', filename='image/accessDenied.gif')}}" />
                 {% endif %}
             </div>
+            {% endif %}
 
     </div>
 </div>

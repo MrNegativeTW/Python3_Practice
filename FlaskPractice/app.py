@@ -8,25 +8,15 @@ import requests
 from scrap import login, examResults, data, date, period, timeOfExam, room, rowsss, col, subject, dataLengh
 
 
-
-
-
-
 # App Start
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'a83c51c8b7fc804eb395d7c1d753fa28'
-
-
-
 
 
 # Index
 @app.route('/')
 def hello():
 	return render_template('index.html')
-
-
-
 
 
 # 神選之物 / DiffToChoice
@@ -49,18 +39,12 @@ def DiffToChoice():
 		return render_template('DiffToChoice.html',title='油耗計算', form=form, ans=ans)
 
 
-
-
-
 # ToGoogle
 @app.route('/ToGoogle')
 def ToGoogle():
 	import webbrowser
 	webbrowser.open('https://google.com')
 	return render_template('ToGoogle.html', title='ToGoogle')
-
-
-
 
 
 # 油耗計算 / GasPricePerKm
@@ -76,9 +60,6 @@ def GasPricePerKm():
 		return render_template('GasPricePerKm.html',title='油耗計算', form=form, result=results)
 
 	return render_template('GasPricePerKm.html',title='油耗計算', form=form)
-
-
-
 
 
 # 漂亮的考試時間 / BeautifulExam
@@ -190,48 +171,11 @@ def BeautifulExam():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # 自動考試 / AutoExam
 @app.route('/AutoExam', methods=['GET', 'POST'])
 def AutoExam():
 	form = AutoExamForm()
 	return render_template('AutoExam.html', form=form)
-
-
-
 
 
 # 大小寫 / Upper
@@ -261,10 +205,6 @@ def Upper():
 		return render_template('Upper.html', form=form, results=results)
 
 	return render_template('Upper.html', form=form)
-
-
-
-
 
 
 if __name__ == '__main__':
