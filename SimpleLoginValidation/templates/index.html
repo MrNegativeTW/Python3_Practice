@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block Content %}
+<div class="header-nightsky">
+    <div class="hero">
+            <h1>登入啦</h1>
+            <form method="POST" action="">
+                <div class="form-group">
+                    {{ form.hidden_tag() }}
+                    {{ form.email.label(class="formWhiteText") }} 
+                    {{ form.email(class="form-control") }}
+                    {{ form.password.label(class="formWhiteText") }} 
+                    {{ form.password(class="form-control") }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+            </form>
+
+            <div>
+                {% if accountName %}
+                <h3 class="text-center formWhiteText">
+                    You're {{ accountName }} , am I right?
+                </h3>
+                {% endif %}
+            </div>
+
+    </div>
+</div>
+{% endblock Content %}
